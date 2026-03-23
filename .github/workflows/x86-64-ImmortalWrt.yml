@@ -5,6 +5,9 @@ on:
   workflow_call:
   # schedule:
   #   - cron: 0 20 * * *
+permissions:
+  contents: write  # 允许写入仓库内容（创建Release/上传产物）
+  packages: read   # 可选，避免其他权限冲突
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
