@@ -7,6 +7,8 @@ export LC_ALL=C
 sed -i 's/192.168.1.1/192.168.2.3/g' package/base-files/files/bin/config_generate
 # 修改默认主机名
 sed -i "s/hostname='.*'/hostname='ImmortalWrt'/g" package/base-files/files/bin/config_generate
+# 把Argon设为默认LuCI主题
+sed -i "s/option theme '.*'/option theme 'argon'/g" feeds/luci/modules/luci-base/root/etc/config/luci
 # 修改固件版本显示（移除原作者信息，改为通用编译信息）
 sed -i "s#_('Firmware Version'), (L\.isObject(boardinfo\.release) ? boardinfo\.release\.description + ' / ' : '') + (luciversion || ''),# \
             _('Firmware Version'),\n \
