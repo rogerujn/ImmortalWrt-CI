@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write  # 允许写入仓库内容（创建Release/上传产物）
   packages: read   # 可选，避免其他权限冲突
+  actions: write   # 新增：允许删除Actions缓存
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
