@@ -25,19 +25,24 @@ sed -i "s#_('Firmware Version'), (L\.isObject(boardinfo\.release) ? boardinfo\.r
 # 移除原有的主题包（避免冲突）
 rm -rf feeds/luci/applications/luci-app-argon-config
 rm -rf feeds/luci/themes/luci-theme-argon
+# rm -rf feeds/luci/applications/luci-app-wechatpush
 
 # 克隆最新的Argon主题和配置
 git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon feeds/luci/themes/luci-theme-argon
 git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config feeds/luci/applications/luci-app-argon-config
+
+# git clone --depth=1 https://github.com/tty228/luci-app-wechatpush package/luci-app-wechatpush
 
 # ====================== 保留PassWall核心（配置文件中启用） ======================
 # 移除OpenWrt Feeds自带的冲突核心库
 rm -rf feeds/packages/net/{xray-core,v2ray-geodata,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,trojan-plus,tuic-client,v2ray-plugin,xray-plugin,geoview,shadow-tls}
 # 克隆PassWall官方包
 git clone --depth=1 https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/passwall-packages
+
 # 移除过时的PassWall版本，克隆最新版
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone --depth=1 https://github.com/Openwrt-Passwall/openwrt-passwall package/luci-app-passwall
+
 # 清理PassWall的chnlist规则文件（精简规则）
 echo "baidu.com"  > package/luci-app-passwall/luci-app-passwall/root/usr/share/passwall/rules/chnlist
 
